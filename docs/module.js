@@ -1,6 +1,6 @@
 var Module = {
     'locateFile': function(path, prefix) {
-        return prefix + '/containers/' + path;
+        return prefix + '/container2wasm-demo/containers/' + path;
     }
 };
 
