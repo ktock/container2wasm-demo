@@ -1,0 +1,3 @@
+[submodule "docs/containers"]
+	path = docs/containers
+	url = https://github.com/ktock/demo-images
