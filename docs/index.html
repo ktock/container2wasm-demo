@@ -14,6 +14,63 @@
 
 <p>Examples of running Linux-based containers on browser using <a href="https://github.com/ktock/container2wasm">container2wasm</a>.</p>
 
+<section>
+
+<h2>x86_64 containers demo</h2>
+
+<p>These examples run x86_64(amd64) containers on browser.</p>
+
+<table class="table table-bordered w-auto">
+<tr>
+<th>Demo Name</th>
+<th>Image</th>
+<th>Terminal</th>
+</tr>
+
+<tr>
+<td><a href="https://github.com/ktock/container2wasm-demo/tree/main/src/amd64-debian-wasi">Debian</a></td>
+<td><pre><code>debian:sid-slim</code></pre></td>
+<td><a href="./amd64-debian-wasi.html">start</a>(169MB)</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/ktock/container2wasm-demo/tree/main/src/amd64-python-wasi">Python</a></td>
+<td>
+<pre><code>python:3.11-alpine</code></pre>
+</td>
+<td><a href="./amd64-python-wasi.html">start</a>(151MB)</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/ktock/container2wasm-demo/tree/main/src/amd64-node-wasi">Node JS</a></td>
+<td>
+<pre><code>node:19-alpine</code></pre>
+</td>
+<td><a href="./amd64-node-wasi.html">start</a>(275MB)</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/ktock/container2wasm-demo/tree/main/src/amd64-vim-wasi">Vim</a></td>
+<td>
+<pre><code>FROM alpine:3.18
+RUN apk add --no-cache vim
+ENTRYPOINT ["vim"]</code></pre>
+</td>
+<td><a href="./amd64-vim-wasi.html">start</a>(135MB)</td>
+</tr>
+
+</table>
+
+<p>NOTE: They are compiled as WASI images and run on browser via polyfill.</p>
+
+</section>
+
+<section>
+
+<h2>RISC-V containers demo</h2>
+
+<p>These examples run riscv64 containers on browser.</p>
+
 <table class="table table-bordered w-auto">
 <tr>
 <th>Demo Name</th>
@@ -58,6 +115,10 @@ ENTRYPOINT ["vim"]</code></pre>
 </tr>
 
 </table>
+
+<p>NOTE: They are compiled as emscripten WASM images and run on browser.</p>
+
+</section>
 
 <p>More info including docs and source code is available from <a href="https://github.com/ktock/container2wasm">container2wasm</a> repo. This page is served from <a href="https://github.com/ktock/container2wasm-demo">container2wasm-demo repo</a> as GitHub Pages.</p>
 

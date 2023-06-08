@@ -2,7 +2,7 @@ function startVM(elemId, workerFileName){
     const xterm = new Terminal();
     xterm.open(document.getElementById(elemId));
     const { master, slave } = openpty();
-    termios = slave.ioctl("TCGETS");
+    var termios = slave.ioctl("TCGETS");
     termios.iflag &= ~(/*IGNBRK | BRKINT | PARMRK |*/ ISTRIP | INLCR | IGNCR | ICRNL | IXON);
     termios.oflag &= ~(OPOST);
     termios.lflag &= ~(ECHO | ECHONL | ICANON | ISIG | IEXTEN);
@@ -12,4 +12,4 @@ function startVM(elemId, workerFileName){
     xterm.loadAddon(master);
     const worker = new Worker(workerFileName);
     new TtyServer(slave).start(worker);
-}
+};
