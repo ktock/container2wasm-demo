@@ -23,13 +23,32 @@ ENTRYPOINT ["vim"]</code></pre>
 <h2>Terminal</h2>
 <div class="d-inline-block" id="terminal-riscv64-vim"></div>
 
-<p><a href="?">[launch entrpoint]</a> <a href="?args=sh">[launch shell (sh)]</a></p>
+<p><a href="?">[launch ENTRYPOINT]</a> <a href="?args=sh">[launch shell (sh)]</a> <a href="?net=none">[disable networking]</a></p>
 
-<p>NOTE: It can take some time to load and start the container.</p>
+<p>It can take some time to load and start the container.</p>
 
-<p>Tested on Firefox 110.0.1 and Google Chrome 111.0.5563.64.</p>
+<h2>Example</h2>
 
-<p>More info including docs and source code is available from <a href="https://github.com/ktock/container2wasm">container2wasm</a> repo. This page is served from <a href="https://github.com/ktock/container2wasm-demo">container2wasm-demo repo</a> as GitHub Pages.</p>
+<p>Running the following in the container will get the contents of the demo page over HTTP.</p>
+
+<pre><code>:!wget -O - https://ktock.github.io/container2wasm-demo/</code></pre>
+
+<h2>Note</h2>
+
+<p>Container can perform HTTP(S) networking via the HTTP(S) proxy running on the browser. In the container, <code>http_proxy</code>, <code>https_proxy</code>, <code>HTTP_PROXY</code> and <code>HTTPS_PROXY</code> are pre-configured to the proxy's address (<code>http://192.168.127.253:80</code>). The proxy (+ networking stack) run on browser, relying on the browser's Fetch API. So out-of-browser proxy service is NOT used. HTTPS connection is terminated at the proxy and relies on Fetch API for re-encryption so the certificate for the proxy is configured as <code>SSL_CERT_FILE=/.wasmenv/proxy.crt</code> in the container.</p>
+
+<p>The proxy is experimental and has limitations:</p>
+
+<ul>
+<li>The set of accesible sites is limited by browser (e.g. by CORS mechanism).</li>
+<li>The container and the proxy don't have the control over <a href="https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name">Forbidden headers</a> and they are controlled by the browser.</li>
+</ul>
+
+<p>Please see also <a href="https://github.com/ktock/container2wasm">container2wasm</a> repo for the details and other less-restricted networking methods (e.g. WebSocket + out-of-browser networking stack).</p>
+
+<hr>
+
+<p>Tested on Google Chrome 116.0.5845.187. More info including docs and source code is available from <a href="https://github.com/ktock/container2wasm">container2wasm</a> repo. This page is served from <a href="https://github.com/ktock/container2wasm-demo">container2wasm-demo repo</a> as GitHub Pages.</p>
 
 <p><a href="./index.html">Back to top</a></p>
 
@@ -37,8 +56,9 @@ ENTRYPOINT ["vim"]</code></pre>
 <script src="./coi-serviceworker.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xterm@5.1.0/lib/xterm.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xterm-pty@0.9.4/index.js"></script>
-<script src="./script.js"></script>
-<script>startVM("terminal-riscv64-vim", "./riscv64-vim.js"+location.search);</script>
+<script src="./src/stack.js"></script>
+<script src="./worker.js"></script>
+<script>startWasi("terminal-riscv64-vim", "./src/worker.js"+location.search, location.origin + "/containers/riscv64-vim-wasi-container", 2);</script>
 </body>
 
 </html>
