@@ -43,14 +43,6 @@ RUN apt-get update && apt-get install -y curl</code></pre></td>
 </tr>
 
 <tr>
-<td><a href="https://github.com/ktock/container2wasm-demo/tree/main/src/amd64-node-wasi">Node JS</a></td>
-<td>
-<pre><code>node:19-alpine</code></pre>
-</td>
-<td><a href="./amd64-node-wasi.html">start</a>(269MB)</td>
-</tr>
-
-<tr>
 <td><a href="https://github.com/ktock/container2wasm-demo/tree/main/src/amd64-vim-wasi">Vim</a></td>
 <td>
 <pre><code>FROM alpine:3.18
@@ -94,16 +86,6 @@ RUN apk add --no-cache python3
 ENTRYPOINT ["python3"]</code></pre>
 </td>
 <td><a href="./riscv64-python.html">start</a>(90MB)</td>
-</tr>
-
-<tr>
-<td><a href="https://github.com/ktock/container2wasm-demo/tree/main/src/riscv64-node">Node JS</a></td>
-<td>
-<pre><code>FROM riscv64/alpine:20230208
-RUN apk add --no-cache nodejs
-ENTRYPOINT ["node"]</code></pre>
-</td>
-<td><a href="./riscv64-node.html">start</a>(98MB)</td>
 </tr>
 
 <tr>
