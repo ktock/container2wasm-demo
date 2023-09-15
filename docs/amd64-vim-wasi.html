@@ -58,7 +58,7 @@ ENTRYPOINT ["vim"]</code></pre>
 <script src="https://cdn.jsdelivr.net/npm/xterm-pty@0.9.4/index.js"></script>
 <script src="./src/stack.js"></script>
 <script src="./worker.js"></script>
-<script>startWasi("terminal-amd64-vim", "./src/worker.js"+location.search, location.origin + "/containers/amd64-vim-wasi-container", 3);</script>
+<script>startWasi("terminal-amd64-vim", "./src/worker.js"+location.search, location.origin + "/container2wasm-demo" + "/containers/amd64-vim-wasi-container", 3);</script>
 </body>
 
 </html>

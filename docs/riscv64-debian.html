@@ -57,7 +57,7 @@ RUN apt-get update && apt-get install -y curl</code></pre>
 <script src="https://cdn.jsdelivr.net/npm/xterm-pty@0.9.4/index.js"></script>
 <script src="./src/stack.js"></script>
 <script src="./worker.js"></script>
-<script>startWasi("terminal-riscv64-debian", "./src/worker.js"+location.search, location.origin + "/containers/riscv64-debian-wasi-container", 3);</script>
+<script>startWasi("terminal-riscv64-debian", "./src/worker.js"+location.search, location.origin + "/container2wasm-demo" + "/containers/riscv64-debian-wasi-container", 3);</script>
 </body>
 
 </html>

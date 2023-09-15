@@ -63,7 +63,7 @@ var d = http.get({
 <script src="https://cdn.jsdelivr.net/npm/xterm-pty@0.9.4/index.js"></script>
 <script src="./src/stack.js"></script>
 <script src="./worker.js"></script>
-<script>startWasi("terminal-riscv64-node", "./src/worker.js"+location.search, location.origin + "/containers/riscv64-node-wasi-container", 2);</script>
+<script>startWasi("terminal-riscv64-node", "./src/worker.js"+location.search, location.origin + "/container2wasm-demo" + "/containers/riscv64-node-wasi-container", 2);</script>
 </body>
 
 </html>
